@@ -39,22 +39,24 @@ public class PlayerJoin implements Listener {
     //title animation
     private HashMap<UUID, Integer> aProgress;
     private List<String> title;
-
-    @EventHandler(priority = EventPriority.NORMAL)
-    public void onJoin(PlayerJoinEvent event){
-        Player player = event.getPlayer();
-
-        //title animation
+    
+    public PlayerJoin() {
         aProgress = Maps.newHashMap();
+        
+        //title animation
         title = Arrays.asList(
                 ChatColor.GREEN + "< >",
                 ChatColor.GREEN + "<   >",
                 ChatColor.GREEN + "<       >",
                 ChatColor.GREEN + "<        >",
                 ChatColor.GREEN + "<           >"
-
         );
+    }
 
+    @EventHandler(priority = EventPriority.NORMAL)
+    public void onJoin(PlayerJoinEvent event){
+        Player player = event.getPlayer();
+        
         aProgress.put(player.getUniqueId(), 0);
 
         new BukkitRunnable() {
